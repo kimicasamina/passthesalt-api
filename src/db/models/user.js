@@ -21,7 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     toJSON() {
-      return { ...this.get(), id: undefined };
+      return { ...this.get(), id: undefined, password: undefined };
+
+      // let user = { ...this.get(), id: undefined };
+      // delete user.password;
+      // return user;
     }
   }
   User.init(
@@ -82,6 +86,9 @@ module.exports = (sequelize, DataTypes) => {
         validatePassword: (password) => {
           return bcrypt.compareSync(password, this.password);
         },
+      },
+      defaultScope: {
+        attributes: { exclude: ["password"] },
       },
       scopes: {
         withoutPassword: {

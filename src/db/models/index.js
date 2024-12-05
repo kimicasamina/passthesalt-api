@@ -1,5 +1,7 @@
 "use strict";
-require("dotenv").config();
+
+import dotenv from "dotenv";
+dotenv.config();
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
@@ -18,12 +20,14 @@ if (config.use_env_variable) {
   console.log(
     `${config.use_env_variable} ${process.env[config.use_env_variable]}`
   );
+  console.log("Environment Variable:", process.env[config.use_env_variable]);
   sequelize = new Sequelize(process.env[config.use_env_variable], {
     dialect: config.dialect, // Explicitly pass the dialect
     username: config.username,
     password: config.password,
     database: config.database,
     host: config.host,
+    dialectOptions: config.dialectOptions,
     logging: config.logging || console.log, // Add other config options if necessary
   });
 } else {

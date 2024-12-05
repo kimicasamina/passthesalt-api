@@ -1,5 +1,6 @@
-require("dotenv").config();
+"use strict";
 
+require("dotenv").config();
 module.exports = {
   development: {
     dialect: "mysql",
@@ -7,9 +8,9 @@ module.exports = {
     dialectOptions: {
       ssl: {
         require: true,
-        native: true,
-      },
-    },
+        "native": true
+      }
+    }
   },
   test: {
     dialect: "postgres",
@@ -17,9 +18,9 @@ module.exports = {
     dialectOptions: {
       ssl: {
         require: true,
-        native: true,
-      },
-    },
+        "native": true
+      }
+    }
   },
   production: {
     dialect: "postgres",
@@ -27,8 +28,8 @@ module.exports = {
     dialectOptions: {
       ssl: {
         require: "true",
-        native: "true",
-      },
-    },
-  },
+        "native": "true"
+      }
+    }
+  }
 };

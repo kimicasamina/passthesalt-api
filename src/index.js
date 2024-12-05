@@ -12,6 +12,8 @@ import authRouter from "./api/routes/auth";
 import loginRouter from "./api/routes/login";
 import noteRouter from "./api/routes/note";
 import verifyToken from "./middleware/verifyToken";
+
+dotenv.config();
 const app = express();
 
 // middlewares

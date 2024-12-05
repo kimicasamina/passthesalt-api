@@ -28,3 +28,16 @@ Thu 05	02:38:57 PM	2e7d714f-1948-4a30-821e-b74f8d1fbb4b	POST	undefined	/api/auth
 Thu 05	02:40:46 PM	2f09962f-f533-4656-a77b-2a9ed6d505e2	POST	undefined	/api/logins/}
 Thu 05	02:40:55 PM	79c035ad-4701-40d5-b546-3f0f0a407c9e	POST	undefined	/api/logins/}
 Thu 05	02:41:06 PM	762e580f-dcc4-4002-925c-7a12d6806796	POST	undefined	/api/logins/}
+Thu 05	03:55:47 PM	83bb323c-8bd3-4f26-b1b0-4ca2ff2191ab	GET	undefined	/api/users/}
+Thu 05	03:57:17 PM	a77a3cef-2ba6-4558-95cd-0ed5c9ffab73	GET	undefined	/api/users/}
+Thu 05	03:58:30 PM	dd7615cc-0925-453a-9dfb-54e360868387	POST	undefined	/api/auth/register}
+Thu 05	03:58:42 PM	7451348d-68a6-4ec4-8c5f-94ebb2271470	POST	undefined	/api/auth/login}
+Thu 05	03:59:02 PM	c3ebb99e-b3f1-4922-a3d7-5fd52f3ddb8c	GET	undefined	/api/users}
+Thu 05	04:00:29 PM	ee1d7941-1034-41b0-be12-30666db82dfc	GET	undefined	/api/users}
+Thu 05	04:02:26 PM	1e51802c-0ef7-422d-aba3-a63ffc303b54	GET	undefined	/api/users}
+Thu 05	04:02:50 PM	9f8d7123-d83e-4151-a56d-3eae0d519478	GET	undefined	/api/users}
+Thu 05	04:04:13 PM	1387578f-c6df-4f8e-bda3-a62f9fd348be	GET	undefined	/api/users}
+Thu 05	04:04:39 PM	fd9bd684-4724-40fa-a927-70501f1eca47	GET	undefined	/api/users}
+Thu 05	04:08:00 PM	5afe7908-e895-4544-a9ef-bb4ea80e4bb1	GET	undefined	/api/users}
+Thu 05	04:08:51 PM	cf666a19-1ec1-4230-97cf-c2c7112d3317	GET	undefined	/api/users}
+Thu 05	04:11:50 PM	163d5596-4870-48d4-b17f-34a324a30532	POST	undefined	/api/auth/login}
