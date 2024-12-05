@@ -5,8 +5,13 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import corsOption from "./middleware/corsOption";
+import { logger } from "./middleware/logEvents";
 import connection from "./db/config/connection";
-import { User } from "./db/models";
+import userRouter from "./api/routes/user";
+import authRouter from "./api/routes/auth";
+import loginRouter from "./api/routes/login";
+import noteRouter from "./api/routes/note";
+import verifyToken from "./middleware/verifyToken";
 const app = express();
 
 // middlewares
@@ -19,31 +24,18 @@ app.use(helmet());
 app.use(cors(corsOption));
 
 // custom middleware logger
-// app.use(logger);
-
-// app.use("/api/users", userRouter);
-// app.use("/api/logins", verifyToken, loginRouter);
-// app.use("/api/notes", verifyToken, noteRouter);
-// app.use("/api/auth", authRouter);
+app.use(logger);
 
 // endpoints
-app.get("/", (req, res) => {
-  console.log("HELLO WORLD!");
+app.get("/api", (req, res) => {
+  console.log("API...");
+  return res.json({ msg: "HELLO WORLD" });
 });
 
-app.get("/users", async (req, res) => {
-  const users = await User.findAll();
-  console.log("users:", users);
-  res.json(users);
-});
-
-app.post("/users", async (req, res) => {
-  const users = await User.create({
-    ...req.body,
-  });
-  console.log("users:", users);
-  res.json(users);
-});
+app.use("/api/users", userRouter);
+app.use("/api/logins", verifyToken, loginRouter);
+app.use("/api/notes", verifyToken, noteRouter);
+app.use("/api/auth", authRouter);
 
 // global error handler
 app.use("*", (err, req, res, next) => {
