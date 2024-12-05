@@ -5,8 +5,8 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import corsOption from "./middleware/corsOption";
-
-dotenv.config();
+import connection from "./db/config/connection";
+import { User } from "./db/models";
 const app = express();
 
 // middlewares
@@ -31,6 +31,20 @@ app.get("/", (req, res) => {
   console.log("HELLO WORLD!");
 });
 
+app.get("/users", async (req, res) => {
+  const users = await User.findAll();
+  console.log("users:", users);
+  res.json(users);
+});
+
+app.post("/users", async (req, res) => {
+  const users = await User.create({
+    ...req.body,
+  });
+  console.log("users:", users);
+  res.json(users);
+});
+
 // global error handler
 app.use("*", (err, req, res, next) => {
   console.error(err.stack);
@@ -41,5 +55,6 @@ app.listen(process.env.PORT, async () => {
   console.log(
     `Server running on port ${process.env.PORT} \nin ${process.env.NODE_ENV} mode`
   );
-  //   connection();
+
+  connection();
 });
