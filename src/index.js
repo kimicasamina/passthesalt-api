@@ -4,7 +4,7 @@ import helmet from "helmet";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import corsOption from "./middleware/corsOption";
+import { corsOption } from "./middleware/corsOption";
 import { logger } from "./middleware/logEvents";
 import connection from "./db/config/connection";
 import userRouter from "./api/routes/user";

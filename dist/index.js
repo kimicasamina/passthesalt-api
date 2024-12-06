@@ -45,7 +45,7 @@ app.get("/api", function (req, res) {
     msg: "HELLO WORLD"
   });
 });
-app.use("/api/users", _user["default"]);
+app.use("/api/users", _verifyToken["default"], _user["default"]);
 app.use("/api/logins", _verifyToken["default"], _login["default"]);
 app.use("/api/notes", _verifyToken["default"], _note["default"]);
 app.use("/api/auth", _auth["default"]);

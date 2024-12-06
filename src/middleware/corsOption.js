@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-const corsOptions = {
+export const corsOption = {
   origin:
     process.env.NODE_ENV === "production"
       ? process.env.PASSTHESALT_CLIENT_URL
@@ -9,5 +9,3 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-
-export default corsOption;
