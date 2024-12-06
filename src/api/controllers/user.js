@@ -2,7 +2,7 @@ import { User, Login } from "../../db/models";
 
 export const getAllUsers = async (req, res, next) => {
   try {
-    const users = await User.findAll({
+    const users = await User.scope("withoutPassword").findAll({
       include: ["logins", "notes"],
     });
     return res.json({ users });
@@ -15,7 +15,7 @@ export const getAllUsers = async (req, res, next) => {
 export const getUserByUuid = async (req, res, next) => {
   const uuid = req.params.uuid;
   try {
-    const user = await User.findOne({
+    const user = await User.scope("withoutPassword").findOne({
       where: { uuid },
       include: ["logins", "notes"],
     });
@@ -29,7 +29,7 @@ export const getUserByUuid = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
   const uuid = req.params.uuid;
   try {
-    const user = await User.findOne({
+    const user = await User.scope("withoutPassword").findOne({
       where: { uuid },
       include: ["logins", "notes"],
     });
@@ -60,8 +60,13 @@ export const deleteUser = async (req, res, next) => {
 export const createUser = async (req, res, next) => {
   const { username, email, password } = req.body;
   try {
-    const user = await User.create({ username, email, password });
-    return res.json(user);
+    let user = await User.create({
+      username,
+      email,
+      password,
+    });
+
+    return res.json({ user: { ...user, password: undefined } });
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);

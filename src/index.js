@@ -34,7 +34,7 @@ app.get("/api", (req, res) => {
   return res.json({ msg: "HELLO WORLD" });
 });
 
-app.use("/api/users", userRouter);
+app.use("/api/users", verifyToken, userRouter);
 app.use("/api/logins", verifyToken, loginRouter);
 app.use("/api/notes", verifyToken, noteRouter);
 app.use("/api/auth", authRouter);

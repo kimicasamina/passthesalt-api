@@ -21,9 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     toJSON() {
-      return { ...this.get(), id: undefined, password: undefined };
+      return { ...this.get(), id: undefined };
 
-      // let user = { ...this.get(), id: undefined };
+      let user = { ...this.get(), id: undefined };
       // delete user.password;
       // return user;
     }
@@ -93,6 +93,9 @@ module.exports = (sequelize, DataTypes) => {
       scopes: {
         withoutPassword: {
           attributes: { exclude: ["password"] },
+        },
+        withPassword: {
+          attributes: { include: ["password"] },
         },
       },
     }

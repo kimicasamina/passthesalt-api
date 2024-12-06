@@ -36,11 +36,11 @@ module.exports = function (sequelize, DataTypes) {
       key: "toJSON",
       value: function toJSON() {
         return _objectSpread(_objectSpread({}, this.get()), {}, {
-          id: undefined,
-          password: undefined
+          id: undefined
         });
-
-        // let user = { ...this.get(), id: undefined };
+        var user = _objectSpread(_objectSpread({}, this.get()), {}, {
+          id: undefined
+        });
         // delete user.password;
         // return user;
       }
@@ -145,6 +145,11 @@ module.exports = function (sequelize, DataTypes) {
       withoutPassword: {
         attributes: {
           exclude: ["password"]
+        }
+      },
+      withPassword: {
+        attributes: {
+          include: ["password"]
         }
       }
     }

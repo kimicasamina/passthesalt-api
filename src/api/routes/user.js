@@ -8,12 +8,11 @@ import {
   updateUser,
   deleteUser,
 } from "../controllers/user";
-import verifyToken from "../../middleware/verifyToken";
 
 router.get("/", getAllUsers);
 router.get("/:uuid", getUserByUuid);
 router.post("/", createUser);
-router.put("/:uuid", verifyToken, updateUser);
-router.delete("/:uuid", verifyToken, deleteUser);
+router.put("/:uuid", updateUser);
+router.delete("/:uuid", deleteUser);
 
 export default router;

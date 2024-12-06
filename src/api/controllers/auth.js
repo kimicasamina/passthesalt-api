@@ -1,10 +1,7 @@
 import { User } from "../../db/models";
-// import { User } from "../../db/models/user";
 import bcrypt from "bcrypt";
 import { compareHashPassword } from "../../utils/compareHashPassword";
 import { generateToken } from "../../utils/generateToken";
-// import { validPassword } from "../../utils/validPassword";
-// import { generateToken } from "../../utils/generateToken";
 
 export const registerUser = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -38,18 +35,19 @@ export const loginUser = async (req, res, next) => {
 
   try {
     let user = await User.findOne({
-      where: { email },
+      where: { email: email },
       include: ["logins", "notes"],
+      attributes: { include: ["password"] },
     });
-    console.log("USER", user.validPassword(password));
+
+    console.log("USER FOUND:", user.password);
 
     if (!user) {
       return res.status(404).json({ error: "User not found." });
     }
 
-    // const isValid = await compareHashPassword(password, user.password);
-    // console.log("IS VALID? ", isValid);
-    if (!user.validPassword(password)) {
+    const isValid = await user.validPassword(password);
+    if (!isValid) {
       return res.status(404).json({ error: "Password is incorrect" });
     }
 
