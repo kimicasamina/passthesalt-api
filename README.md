@@ -4,8 +4,9 @@ Is a full-stack password manager application designed to securely store and retr
 
 ## Key Features:
 
-Secure Password Storage:
-The application uses the crypto library's AES encryption algorithm to encrypt passwords during storage. When a user retrieves their credentials, the system decrypts the password, ensuring sensitive data is protected at all times.
+### Secure Password Storage:
+
+- The application uses the crypto library's AES encryption algorithm to encrypt passwords during storage. When a user retrieves their credentials, the system decrypts the password, ensuring sensitive data is protected at all times.
 
 ### User Authentication:
 

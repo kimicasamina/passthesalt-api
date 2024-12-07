@@ -4,7 +4,6 @@ import helmet from "helmet";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { corsOption } from "./middleware/corsOption";
 import { logger } from "./middleware/logEvents";
 import connection from "./db/config/connection";
 import userRouter from "./api/routes/user";
@@ -23,7 +22,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(helmet());
-app.use(cors(corsOption));
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL, // Your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow these HTTP methods
+    allowedHeaders: ["Content-Type"], // Allow specific headers
+  })
+);
 
 // custom middleware logger
 app.use(logger);
